@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Content, Form, Item, Input, Label, Text, Toast } from 'native-base';
 import { ScrollView } from "react-native-gesture-handler";
 import styles from "./styles";
+import i18n from '../../i18n';
 
 export default class RegisterForm extends Component {
   state = { mobile: "", disable: true};
@@ -13,7 +14,7 @@ export default class RegisterForm extends Component {
     }
   }
   sendCode = () => {
-    alert("sdfldk")
+    alert("sdfldk");
   }
   render() {
     return (
@@ -21,7 +22,7 @@ export default class RegisterForm extends Component {
           <ScrollView keyboardShouldPersistTaps='always'>
             <Form>
               <Item stackedLabel>
-                <Label>شماره همراه</Label>
+                <Label>{ i18n.t('common.mobileNumber') }</Label>
                 <Input
                 maxLength={11}
                 autoFocus = {true} 
@@ -35,9 +36,10 @@ export default class RegisterForm extends Component {
           bordered 
           success 
           block
+          style={styles.sendCodeBottom}
           disabled={this.state.disable}
           onPress={() => this.sendCode()}>
-            <Text>دریافت کد تایید</Text>
+            <Text>{ i18n.t('login.getVerficationCode') }</Text>
           </Button>
         </Content>
     );

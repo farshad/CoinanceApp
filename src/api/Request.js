@@ -21,7 +21,6 @@ export default class Request {
             headers: {'Authorization': `Bearer ${_token}`, 'Accept': 'application/json'}
         };
     }
-
     send = (params, cb) => {
         let url;
         let parameters;

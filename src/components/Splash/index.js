@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Animated, View, Text } from "react-native";
 import { Spinner } from 'native-base';
-import UserRepository from '../../storage/repositories/UserRepository'
-import UserModel from '../../storage/models/UserModel'
+import UserRepository from '../../storage/repositories/UserRepository';
+import i18n from '../../i18n';
 
 export default class Splash extends Component {
   constructor(props) {
@@ -35,16 +35,13 @@ export default class Splash extends Component {
       }
     })
   }
-  static navigationOptions = {
-    header: null,
-  }
   
   render() {
     return (
         <View style={{ backgroundColor: '#00bd56', flex: 1, alignItems: "center", justifyContent: "center" }}>
           <Animated.Image style={{ height: 150, width: 150, marginTop: this.state.marginTop, opacity: this.state.logoOpacity }} source={require('../../assets/images/logo-flat.png')} />
-          <Text style={{fontSize: 40, color: 'white'}}>Coinance</Text>
-          <Text style={{fontSize: 20, color: 'white'}}>معامله آسان و مطمئن</Text>
+          <Text style={{fontSize: 40, color: 'white'}}>{ i18n.t('splash.appName') }</Text>
+          <Text style={{fontSize: 20, color: 'white'}}>{ i18n.t('splash.slogan') }</Text>
           <Spinner color='white' style={{opacity: this.state.spinnerOpacity}} />
         </View>
     );

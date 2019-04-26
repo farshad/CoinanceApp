@@ -2,12 +2,12 @@ import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
     logo: {
-        height: 120,
-         width: 120
+        height: 90,
+        width: 90,
+        margin: 0
     },
-    content: {
-        padding: 20,
-        margin: 10,
+    sendCodeBottom: {
+        marginBottom: 10,
     },
     mainGrid: {
         alignItems: 'center',
