@@ -3,9 +3,14 @@ import { Button, Content, Form, Item, Input, Label, Text, Toast } from 'native-b
 import { ScrollView } from "react-native-gesture-handler";
 import styles from "./styles";
 import i18n from '../../i18n';
+import RegisterService from '../../services/RegisterService';
 
 export default class RegisterForm extends Component {
-  state = { mobile: "", disable: true};
+  constructor(props){
+    super(props);
+    this.registerService = new RegisterService();
+    this.state = { mobile: "", disable: true};
+  }
   enableButton = () => {
     if(this.state.mobile.length > 10){
       this.setState({disable:false});
@@ -14,7 +19,12 @@ export default class RegisterForm extends Component {
     }
   }
   sendCode = () => {
-    alert("sdfldk");
+    this.registerService.getVerficationCode(this.state.mobile)
+    .then((res) => {
+      //console.log(res);
+    }).catch((err) => {
+     // console.log(err);
+    });
   }
   render() {
     return (

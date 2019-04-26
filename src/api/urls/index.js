@@ -1,4 +1,7 @@
-export const BASE_URL = '127.0.0.1:8080'
+export const BASE_URL = 'http://10.0.2.2:8080/'
 export const URL = {
-    USER_LOGIN: '/users/login',
+    REGISTER: {
+        GET_VERIFICATION_CODE: 'register/getVerificationCode'
+    },
+    USER_LOGIN: 'users/login',
 }

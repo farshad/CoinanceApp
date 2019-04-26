@@ -1,55 +1,39 @@
 import  axios from 'axios'
-import BASE_URL from './urls'
+import { BASE_URL } from './urls'
 
-let instance;
 export default class Request {
     constructor() {
-        instance = axios.create(this.getConfig());
+        this.instance = axios.create(this.getConfig());
 
-        instance.interceptors.response.use(function (response) {
+        this.instance.interceptors.request.use(request => {
+            console.log('Starting Request', request)
+            return request
+          })
+
+        this.instance.interceptors.response.use(function (response) {
             return response.data
         }, function (error) {
-            return Promise.reject(error);
+            return Promise.reject(error.response.data);
         });
     }
 
     getConfig = () => {
         let _token = "";
         return {
-            baseURL: `${BASE_URL}`,
+            baseURL: BASE_URL,
             timeout: 3000,
-            headers: {'Authorization': `Bearer ${_token}`, 'Accept': 'application/json'}
+            headers: {
+                'Authorization': `Bearer ${_token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
         };
     }
-    send = (params, cb) => {
-        let url;
-        let parameters;
-
-        if (params.method == 'GET') {
-            url = params.url;
-            get(url, cb);
-        } else if (params.method == 'POST') {
-            url = params.url;
-            parameters = params.obj;
-            post(url, parameters, cb);
-        }
+    async get(url, params) {
+        return await this.instance.get(url, { params: params });
+    }
+    
+    async post(url, data, params) {
+        return this.instance.post(url, data, { params : params });
     }
 };
-
-async function get(url, cb) {
-    try {
-        let response = await instance.get(url);
-        return  cb(null, response);
-    } catch (error){
-        cb(error);
-    }
-}
-
-async function post(url, params, cb) {
-    try {
-        let response = await instance.post(url, params);
-        return cb(null, response);
-    } catch (error) {
-        cb(error);
-    }
-}
