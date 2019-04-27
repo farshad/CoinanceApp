@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import styles from './styles';
+import styles from '../styles';
 import { Image } from "react-native";
-import RegisterForm from "./RegisterForm";
+import VerificationCodeForm from "./VerificationCodeForm";
 import { Container } from "native-base";
 
-export default class Register extends Component {
+export default class VerificationCode extends Component {
   constructor(props){
     super(props);
   }
@@ -13,8 +13,8 @@ export default class Register extends Component {
       <Container style={styles.mainGrid}>
             <Image 
             style={styles.logo}
-            source={require('../../assets/images/logo-green.png')} />
-            <RegisterForm></RegisterForm>
+            source={require('../../../assets/images/logo-green.png')} />
+            <VerificationCodeForm></VerificationCodeForm>
       </Container>
     );
   }

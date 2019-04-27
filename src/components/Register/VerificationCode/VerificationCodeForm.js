@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Button, Content, Form, Item, Input, Label, Text, Toast } from 'native-base';
 import { ScrollView } from "react-native-gesture-handler";
-import styles from "./styles";
-import i18n from '../../i18n';
-import RegisterService from '../../services/RegisterService';
+import styles from "../styles";
+import i18n from '../../../i18n';
+import RegisterService from '../../../services/RegisterService';
 
-export default class RegisterForm extends Component {
+export default class VerificationCodeForm extends Component {
   constructor(props){
     super(props);
     this.registerService = new RegisterService();
@@ -21,9 +21,15 @@ export default class RegisterForm extends Component {
   sendCode = () => {
     this.registerService.getVerficationCode(this.state.mobile)
     .then((res) => {
-      //console.log(res);
+      this.props.navigation.navigate('Home');
     }).catch((err) => {
-     // console.log(err);
+      if(err.status == '400'){
+        Toast.show({
+          text: err.message,
+          type: 'danger'
+        });
+      }
+     console.log(err);
     });
   }
   render() {

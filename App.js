@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import Splash from './src/components/Splash';
-import Register from './src/components/Register';
+import VerificationCode from './src/components/Register/VerificationCode';
 import Home from './src/components/Home';
 import { Root } from "native-base";
 import i18n from './src/i18n';
@@ -13,8 +13,8 @@ const AppNavigator = createStackNavigator({
       header: null
     }
   },
-  Register: {
-    screen: Register,
+  VerificationCode: {
+    screen: VerificationCode,
     navigationOptions: () => ({
       title: i18n.t('login.title'),
       headerLeft: null,

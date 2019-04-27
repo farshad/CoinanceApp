@@ -31,7 +31,7 @@ export default class Splash extends Component {
       if(this._userRepository.getToken() != null){
         this.props.navigation.navigate('Home');
       }else {
-        this.props.navigation.navigate('Register');
+        this.props.navigation.navigate('VerificationCode');
       }
     })
   }
