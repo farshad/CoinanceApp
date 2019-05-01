@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Animated, View, Text } from "react-native";
+import { StackNavigator } from 'react-navigation';
 import { Spinner } from 'native-base';
 import UserRepository from '../../storage/repositories/UserRepository';
 import i18n from '../../i18n';

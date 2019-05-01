@@ -5,23 +5,31 @@ import styles from "../styles";
 import i18n from '../../../i18n';
 import RegisterService from '../../../services/RegisterService';
 
-export default class VerificationCodeForm extends Component {
+export default class VerifyForm extends Component {
   constructor(props){
     super(props);
     this.registerService = new RegisterService();
-    this.state = { mobile: "", disable: true};
+    this.state = { timer: 5};
   }
-  enableButton = () => {
-    if(this.state.mobile.length > 10){
-      this.setState({disable:false});
+  startTimer = () => {
+    setInterval(() => {
+    this.decrementClock();
+    }, 1000);
+  };
+  decrementClock = () => {  
+    if(this.state.timer > 0){
+      this.setState((prevstate) => ({ timer: prevstate.timer-1 }));
     }else{
-      this.setState({disable:true});
+      this.props.navigation.replace('SendAgain', { mobile: this.props.mobile });
     }
+  };
+  componentWillMount() {
+    this.startTimer();
   }
-  sendCode = () => {
-    this.registerService.getVerficationCode(this.state.mobile)
+  send = () => {
+    this.registerService.getVerficationCode(this.props.mobile)
     .then((res) => {
-      this.props.navigation.replace('Verify', { mobile: this.state.mobile });
+      this.props.navigation.navigate('Home');
     }).catch((err) => {
       if(err.status == '400'){
         Toast.show({
@@ -36,27 +44,22 @@ export default class VerificationCodeForm extends Component {
     return (
         <Content contentContainerStyle={{flex: 1}} style={styles.content}>
           <ScrollView keyboardShouldPersistTaps='always'>
+          <Text>{ i18n.t('verify.enterForm') }</Text>
             <Form>
               <Item stackedLabel>
-                <Label>{ i18n.t('common.mobileNumber') }</Label>
+                <Label>{ i18n.t('verify.inputLable') }</Label>
                 <Input
-                maxLength={11}
+                maxLength={6}
                 autoFocus = {true} 
                 keyboardType={"number-pad"} 
                 onChangeText={ (text) => { this.setState({mobile: text}, this.enableButton);} } 
                 value={this.state.mobile} />
               </Item>
             </Form>
+          <Text style={{fontSize: 30}}>
+            { this.state.timer }
+          </Text>
           </ScrollView>
-          <Button 
-          bordered 
-          success 
-          block
-          style={styles.sendCodeBottom}
-          disabled={this.state.disable}
-          onPress={() => this.sendCode()}>
-            <Text>{ i18n.t('login.getVerficationCode') }</Text>
-          </Button>
         </Content>
     );
   }

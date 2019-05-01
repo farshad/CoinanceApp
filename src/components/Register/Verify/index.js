@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import styles from '../styles';
 import { Image } from "react-native";
-import VerificationCodeForm from "./VerificationCodeForm";
+import VerifyForm from "./VerifyForm";
 import { Container } from "native-base";
 
-export default class VerificationCode extends Component {
+export default class Verify extends Component {
   constructor(props){
     super(props);
   }
@@ -14,7 +14,7 @@ export default class VerificationCode extends Component {
             <Image 
             style={styles.logo}
             source={require('../../../assets/images/logo-green.png')} />
-            <VerificationCodeForm navigation={this.props.navigation}></VerificationCodeForm>
+            <VerifyForm navigation={this.props.navigation} mobile={this.props.navigation.state.params.mobile}></VerifyForm>
       </Container>
     );
   }
