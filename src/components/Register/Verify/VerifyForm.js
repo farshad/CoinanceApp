@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Content, Form, Item, Input, Label, Text, Toast } from 'native-base';
+import { Content, Form, Item, Input, Label, Text, Toast } from 'native-base';
 import { ScrollView } from "react-native-gesture-handler";
 import styles from "../styles";
 import i18n from '../../../i18n';
@@ -9,7 +9,7 @@ export default class VerifyForm extends Component {
   constructor(props){
     super(props);
     this.registerService = new RegisterService();
-    this.state = { timer: 5};
+    this.state = { verificationCode: '', timer: 120};
   }
   startTimer = () => {
     setInterval(() => {
@@ -26,8 +26,13 @@ export default class VerifyForm extends Component {
   componentWillMount() {
     this.startTimer();
   }
+  setVerificationCode = () => {
+    if(this.state.verificationCode.length > 5){
+      this.send();
+    }    
+  }
   send = () => {
-    this.registerService.getVerficationCode(this.props.mobile)
+    this.registerService.verify(this.props.mobile, this.state.verificationCode)
     .then((res) => {
       this.props.navigation.navigate('Home');
     }).catch((err) => {
@@ -37,7 +42,6 @@ export default class VerifyForm extends Component {
           type: 'danger'
         });
       }
-     console.log(err);
     });
   }
   render() {
@@ -52,8 +56,8 @@ export default class VerifyForm extends Component {
                 maxLength={6}
                 autoFocus = {true} 
                 keyboardType={"number-pad"} 
-                onChangeText={ (text) => { this.setState({mobile: text}, this.enableButton);} } 
-                value={this.state.mobile} />
+                onChangeText={ (text) => { this.setState({verificationCode: text}, this.setVerificationCode);} } 
+                value={this.state.verificationCode} />
               </Item>
             </Form>
           <Text style={{fontSize: 30}}>

@@ -3,7 +3,6 @@ import { Button, Content,Text, Toast } from 'native-base';
 import styles from "../styles";
 import i18n from '../../../i18n';
 import RegisterService from '../../../services/RegisterService';
-import { StackActions, NavigationActions } from 'react-navigation';
 
 export default class SendAgain extends Component {
   constructor(props){
@@ -14,7 +13,7 @@ export default class SendAgain extends Component {
   sendAgain = () => {
     this.registerService.getVerficationCode(this.state.mobile)
     .then((res) => {
-      this.props.navigation.navigate('Home');
+      this.props.navigation.replace('Verify', { mobile: this.state.mobile });
     }).catch((err) => {
       if(err.status == '400'){
         Toast.show({
@@ -22,16 +21,10 @@ export default class SendAgain extends Component {
           type: 'danger'
         });
       }
-     console.log(err);
     });
   }
   changeMobile = () => {
-      this.props.navigation.replace('VerificationCode', { mobile: this.state.mobile });
-      // const resetAction = StackActions.reset({
-      //   index: 0,
-      //   actions: [NavigationActions.navigate({ routeName: 'VerificationCode' })],
-      // });
-      // this.props.navigation.dispatch(resetAction);
+    this.props.navigation.replace('VerificationCode', { mobile: this.state.mobile });
   }
   render() {
     return (
@@ -42,7 +35,7 @@ export default class SendAgain extends Component {
               success 
               block
               style={styles.sendCodeBottom}
-              onPress={() => this.send()}>
+              onPress={() => this.sendAgain()}>
             <Text>{ i18n.t('verify.sendAgainBtn') }</Text>
           </Button>
           <Button 

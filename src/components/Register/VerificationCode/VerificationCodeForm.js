@@ -9,7 +9,7 @@ export default class VerificationCodeForm extends Component {
   constructor(props){
     super(props);
     this.registerService = new RegisterService();
-    this.state = { mobile: "", disable: true};
+    this.state = { mobile: '', disable: true};
   }
   enableButton = () => {
     if(this.state.mobile.length > 10){
@@ -29,7 +29,6 @@ export default class VerificationCodeForm extends Component {
           type: 'danger'
         });
       }
-     console.log(err);
     });
   }
   render() {

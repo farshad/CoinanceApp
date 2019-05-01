@@ -2,11 +2,11 @@ import  axios from 'axios'
 import { BASE_URL } from './urls'
 
 export default class Request {
-    constructor() {
+    constructor(navigation) {
+        this.navigation = navigation;
         this.instance = axios.create(this.getConfig());
 
         this.instance.interceptors.request.use(request => {
-            console.log('Starting Request', request)
             return request
           })
 
