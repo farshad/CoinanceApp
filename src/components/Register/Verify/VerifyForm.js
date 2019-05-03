@@ -34,7 +34,7 @@ export default class VerifyForm extends Component {
   send = () => {
     this.registerService.verify(this.props.mobile, this.state.verificationCode)
     .then((res) => {
-      this.props.navigation.navigate('Home');
+      this.props.navigation.navigate('Register', {mobile: this.props.mobile});
     }).catch((err) => {
       if(err.status == '400'){
         Toast.show({

@@ -1,6 +1,10 @@
 export default {
     common: {
-        mobileNumber: 'شماره همراه'
+        mobileNumber: 'شماره همراه',
+        submit: 'ثبت',
+        email: 'ایمیل',
+        fullName: 'نام و نام‌خانوادگی',
+        required: '(اجباری)'
     },
     splash: {
       appName: 'Coinance',
@@ -8,7 +12,11 @@ export default {
     },
     login: {
       title: 'ورود/ثبت‌نام',
-      getVerficationCode: 'دریافت کد تایید'
+      getVerficationCode: 'دریافت کد تایید',
+      password: 'رمز عبور'
+    },
+    register: {
+      title: 'ثبت‌نام'
     },
     verify:{
       title: 'تایید شماره همراه',

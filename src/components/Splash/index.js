@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Animated, View, Text } from "react-native";
-import { StackNavigator } from 'react-navigation';
 import { Spinner } from 'native-base';
 import UserRepository from '../../storage/repositories/UserRepository';
 import i18n from '../../i18n';
@@ -8,7 +7,7 @@ import i18n from '../../i18n';
 export default class Splash extends Component {
   constructor(props) {
     super(props)
-    this._userRepository = new UserRepository();
+    this.userRepository = new UserRepository();
 }
   state = {
     logoOpacity : new Animated.Value(0),
@@ -29,10 +28,11 @@ export default class Splash extends Component {
       })
     ]).start(() => {
       this.setState({spinnerOpacity: 1});
-      if(this._userRepository.getToken() != null){
-        this.props.navigation.navigate('Home');
+      if(this.userRepository.getToken() != null){
+        this.props.navigation.replace('Home');
       }else {
-        this.props.navigation.navigate('VerificationCode');
+        this.userRepository.deleteAll();
+        this.props.navigation.replace('VerificationCode');
       }
     })
   }

@@ -18,4 +18,7 @@ export default class RegisterService {
         };
         return this.request.post(URL.REGISTER.VERIFY, null, params);
     }
+    async register(data) {
+        return this.request.post(URL.REGISTER.REGISTER, data, null);
+    }
 }
