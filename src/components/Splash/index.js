@@ -29,10 +29,10 @@ export default class Splash extends Component {
     ]).start(() => {
       this.setState({spinnerOpacity: 1});
       if(this.userRepository.getToken() != null){
-        this.props.navigation.replace('Home');
+        this.props.navigation.navigate('Tab');
       }else {
         this.userRepository.deleteAll();
-        this.props.navigation.replace('VerificationCode');
+        this.props.navigation.navigate('VerificationCode');
       }
     })
   }

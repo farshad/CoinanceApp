@@ -20,7 +20,7 @@ export default class VerifyForm extends Component {
     if(this.state.timer > 0){
       this.setState((prevstate) => ({ timer: prevstate.timer-1 }));
     }else{
-      this.props.navigation.replace('SendAgain', { mobile: this.props.mobile });
+      this.props.navigation.navigate('SendAgain', { mobile: this.props.mobile });
     }
   };
   componentWillMount() {

@@ -13,7 +13,7 @@ export default class SendAgain extends Component {
   sendAgain = () => {
     this.registerService.getVerficationCode(this.state.mobile)
     .then((res) => {
-      this.props.navigation.replace('Verify', { mobile: this.state.mobile });
+      this.props.navigation.navigate('Verify', { mobile: this.state.mobile });
     }).catch((err) => {
       if(err.status == '400'){
         Toast.show({
@@ -24,7 +24,7 @@ export default class SendAgain extends Component {
     });
   }
   changeMobile = () => {
-    this.props.navigation.replace('VerificationCode', { mobile: this.state.mobile });
+    this.props.navigation.navigate('VerificationCode', { mobile: this.state.mobile });
   }
   render() {
     return (

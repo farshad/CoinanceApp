@@ -35,7 +35,7 @@ export default class RegisterForm extends Component {
     this.registerService.register(form)
     .then((res) => {
       this.userRepository.create(new UserModel('1', form.mobile, form.password, res));
-      this.props.navigation.replace('Home');
+      this.props.navigation.navigate('Home');
     }).catch((err, status) => {
       if(status == '400' && err.type == 'validation'){
         err.errors.forEach(e => {

@@ -6,6 +6,10 @@ export default {
         fullName: 'نام و نام‌خانوادگی',
         required: '(اجباری)'
     },
+    mainTab: {
+      home: 'خانه',
+      deals: 'معامله',
+    },
     splash: {
       appName: 'Coinance',
       slogan: 'معامله آسان و مطمئن'

@@ -1,18 +1,15 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import Update from "../Profile/Update";
+import { Button, Text, Icon, Footer, FooterTab, Container } from "native-base";
+import { createBottomTabNavigator, createAppContainer } from "react-navigation";
+import i18n from '../../i18n';
 
 export default class Home extends Component {
-  constructor(props){
-    super(props);
-  }
-  static navigationOptions = {
-    header: null,
-  }
   render() {
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Home Screen</Text>
-      </View>
+        <Container>
+          <Text>lskdjflsdkj</Text>
+        </Container>
     );
   }
 }
