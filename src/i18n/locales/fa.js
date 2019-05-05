@@ -8,7 +8,22 @@ export default {
     },
     mainTab: {
       home: 'خانه',
+      profile: 'حساب کاربری',
       deals: 'معامله',
+      support: 'پشتیبانی',
+    },
+    profile: {
+      title: 'اطلاعات کاربری',
+      update: 'ویرایش اطلاعات',
+      docs: 'ارسال مدارک',
+      changePass: 'تغییر رمز عبور'
+    },
+    finance: {
+      title: 'اطلاعات مالی',
+      addBankAccount: 'افزودن حساب بانکی',
+      transactionsHistory: 'مشاهده تراکنش‌ها',
+      deposit: 'افزایش اعتبار',
+      settlementRequest: 'درخواست برداشت وجه'
     },
     splash: {
       appName: 'Coinance',

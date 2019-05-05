@@ -1,7 +1,10 @@
 import { createStackNavigator } from "react-navigation";
 import Profile from "../components/Profile";
 import Update from "../components/Profile/Update";
+import ChangePassword from '../components/Profile/ChangePassword';
+import PersonalDoc from '../components/Profile/PersonalDoc';
 import Home from '../components/Home';
+import Support from '../components/Support';
 
 export const ProfileNavigator = createStackNavigator({
     Profile: {
@@ -16,7 +19,18 @@ export const ProfileNavigator = createStackNavigator({
           tabBarVisible: null,
         })
       },
- }, {
+      PersonalDoc: {
+        screen: PersonalDoc,
+        navigationOptions: () => ({
+            tabBarVisible: null,
+        })
+    },
+    ChangePassword: {
+        screen: ChangePassword,
+        navigationOptions: () => ({
+            tabBarVisible: null,
+        })
+    }
  });
 
  export const HomeNavigator = createStackNavigator({
@@ -26,5 +40,13 @@ export const ProfileNavigator = createStackNavigator({
             header: null,
         })
     },
- }, {
+ });
+
+ export const SupportNavigator = createStackNavigator({
+    Support: {
+        screen: Support,
+        navigationOptions: () => ({
+            header: null,
+        })
+    },
  });
