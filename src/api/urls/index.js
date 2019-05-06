@@ -5,5 +5,5 @@ export const URL = {
         VERIFY: 'register/verify',
         REGISTER: 'register/'
     },
-    USER_LOGIN: 'users/login',
+    USER_LOGIN: 'signin/',
 }

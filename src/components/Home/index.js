@@ -1,14 +1,24 @@
 import React, { Component } from "react";
-import Update from "../Profile/Update";
-import { Button, Text, Icon, Footer, FooterTab, Container } from "native-base";
-import { createBottomTabNavigator, createAppContainer } from "react-navigation";
-import i18n from '../../i18n';
+import AuthService from '../../services/AuthService';
+import { Button, Container, Text } from "native-base";
 
 export default class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.authService = new AuthService();
+  }
+  send = () => {
+    let token = this.authService.refreshToken();
+    console.warn(token);
+    
+  }
   render() {
     return (
         <Container>
-          <Text>lskdjflsdkj</Text>
+          <Button onPress={() => this.send()}>
+          <Text>send</Text>
+
+          </Button>
         </Container>
     );
   }

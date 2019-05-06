@@ -5,7 +5,6 @@ export default class UserRepository extends BaseRepository {
     constructor() {
         super(UserSchema, 'id')
     }
-
     getToken = function() {
         try {
             let token = null;
@@ -15,6 +14,19 @@ export default class UserRepository extends BaseRepository {
                 token = items[0].token;
             }
             return token;
+        } catch (error) {
+            return error;
+        }
+    }
+    getCurrent = function() {
+        try {
+            let user = null;
+            let items = this.findAll();
+            
+            if(items.length != 0){
+                user = items[0];
+            }
+            return user;
         } catch (error) {
             return error;
         }

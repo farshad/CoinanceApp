@@ -1,8 +1,10 @@
-import  axios from 'axios'
-import { BASE_URL } from './urls'
+import  axios from 'axios';
+import { BASE_URL } from './urls';
+import AuthService from '../services/AuthService';
 
 export default class Request {
     constructor(navigation) {
+        this.authService = new AuthService();
         this.navigation = navigation;
         this.instance = axios.create(this.getConfig());
 
@@ -13,6 +15,14 @@ export default class Request {
         this.instance.interceptors.response.use(function (response) {
             return response.data;
         }, function (error) {
+            if (error.status === 401) {
+        
+                return refreshToken(store).then(_ => {
+                    error.config.headers['Authorization'] = 'Bearer ' + this.authService.refreshToken();
+                    error.config.baseURL = undefined;
+                    return Axios.request(error.config);
+                });
+            }
             return Promise.reject(error.response.data, error.status);
         });
     }
