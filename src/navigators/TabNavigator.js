@@ -31,12 +31,12 @@ export default TabNavigator = createBottomTabNavigator(
         <Footer>
         <FooterTab style={styles.footerTab}>
           <Button
-            style={props.navigation.state.index === 2 ? styles.activeBtn : null}
+            style={props.navigation.state.index === 0 ? styles.activeBtn : null}
             vertical
-            active={props.navigation.state.index === 2}
-            onPress={() => props.navigation.navigate("Support")}>
-            <Icon style={props.navigation.state.index === 2 ? styles.activeIconAndTxt : styles.inactiveIcon} name="chatboxes" />
-            {props.navigation.state.index === 2 && (<Text style={props.navigation.state.index === 2 ? styles.activeIconAndTxt : null}>{ i18n.t('mainTab.support') }</Text>)}
+            active={props.navigation.state.index === 0}
+            onPress={() => props.navigation.navigate("Home")}>
+            <Icon style={props.navigation.state.index === 0 ? styles.activeIconAndTxt : styles.inactiveIcon} name="home" />
+            {props.navigation.state.index === 0 && (<Text style={props.navigation.state.index === 0 ? styles.activeIconAndTxt : null}>{ i18n.t('mainTab.home') }</Text>)}
           </Button>
           <Button
             style={props.navigation.state.index === 1 ? styles.activeBtn : null}
@@ -47,12 +47,12 @@ export default TabNavigator = createBottomTabNavigator(
             {props.navigation.state.index === 1 && (<Text style={props.navigation.state.index === 1 ? styles.activeIconAndTxt : null}>{ i18n.t('mainTab.profile') }</Text>)}
           </Button>
           <Button
-            style={props.navigation.state.index === 0 ? styles.activeBtn : null}
+            style={props.navigation.state.index === 2 ? styles.activeBtn : null}
             vertical
-            active={props.navigation.state.index === 0}
-            onPress={() => props.navigation.navigate("Home")}>
-            <Icon style={props.navigation.state.index === 0 ? styles.activeIconAndTxt : styles.inactiveIcon} name="home" />
-            {props.navigation.state.index === 0 && (<Text style={props.navigation.state.index === 0 ? styles.activeIconAndTxt : null}>{ i18n.t('mainTab.home') }</Text>)}
+            active={props.navigation.state.index === 2}
+            onPress={() => props.navigation.navigate("Support")}>
+            <Icon style={props.navigation.state.index === 2 ? styles.activeIconAndTxt : styles.inactiveIcon} name="chatboxes" />
+            {props.navigation.state.index === 2 && (<Text style={props.navigation.state.index === 2 ? styles.activeIconAndTxt : null}>{ i18n.t('mainTab.support') }</Text>)}
           </Button>
         </FooterTab>
       </Footer>
