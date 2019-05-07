@@ -1,7 +1,6 @@
-import  axios from 'axios'
-import { URL } from '../api/urls';
+import { BASE_URL,URL } from '../api/urls';
 import UserRepository from '../storage/repositories/UserRepository';
-import Request from '../api/Request';
+import  axios from 'axios';
 import UserModel from '../storage/models/UserModel';
 
 export default class AuthsService {
@@ -9,21 +8,25 @@ export default class AuthsService {
         this.userRepository = new UserRepository();
         this.request = new Request();
     }
-
     getToken = () => {
-        return userRepository.getToken();
+        return this.userRepository.getToken();
     }
     refreshToken = () => {
         let token = null;
-        let user = this.userRepository.getCurrent()
+        let user = this.userRepository.getCurrent();
         if(user != null){
             const params = {
                 username: user.username,
                 password: user.pass
             };
-            token = this.request.post(URL.USER_LOGIN, null, params);
-            this.userRepository.deleteAll();
-            this.userRepository.create(new UserModel('1', user.username, user.pass, token));
+            token = axios.post(BASE_URL + URL.USER.LOGIN, null, { params: params }).then(function (res) {
+                this.userRepository.deleteAll().then(() => {
+                    this.userRepository.create(new UserModel('1', params.username, params.password, res));
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         }
         return token;
     }

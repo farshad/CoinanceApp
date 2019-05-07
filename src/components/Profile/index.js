@@ -7,8 +7,19 @@ import {
   Thumbnail, Body 
 } from 'native-base';
 import i18n from '../../i18n'
+import UserService from '../../services/UserService'
 
 export default class Profile extends Component {
+  constructor(props){
+    super(props);
+    this.userService = new UserService();
+    this.state = {fullName: '', mobile: ''};
+  }
+  componentWillMount(){
+    this.userService.getCurrent().then((res) => {
+      this.setState({fullName: res.fullName, mobile: res.mobile});
+    });
+  }
   render() {
     return (
       <Container >
@@ -21,8 +32,8 @@ export default class Profile extends Component {
               <Left style={{justifyContent: 'center' }}>
                 <Thumbnail source={require('../../assets/images/avatar_default.png')} />
                 <Body style={{ flex: 1, alignItems: 'flex-start', marginLeft: 10, marginTop: 10 }} >
-                  <Text>فرشاد آهنگری</Text>
-                  <Text note>۰۹۱۰۲۶۲۶۰۷۶</Text>
+                  <Text>{this.state.fullName}</Text>
+                  <Text note>{this.state.mobile}</Text>
                 </Body>
               </Left>
               <Right>

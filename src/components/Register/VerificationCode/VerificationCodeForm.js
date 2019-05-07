@@ -48,12 +48,12 @@ export default class VerificationCodeForm extends Component {
             </Form>
           </ScrollView>
           <Button 
-          bordered 
-          success 
-          block
-          style={styles.sendCodeBottom}
-          disabled={this.state.disable}
-          onPress={() => this.sendCode()}>
+            bordered 
+            success 
+            block
+            style={styles.sendCodeBottom}
+            disabled={this.state.disable}
+            onPress={() => this.sendCode()}>
             <Text>{ i18n.t('login.getVerficationCode') }</Text>
           </Button>
         </Content>

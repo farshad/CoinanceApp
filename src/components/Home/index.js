@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import AuthService from '../../services/AuthService';
+import UserService from '../../services/UserService'
 import { Button, Container, Text } from "native-base";
 
 export default class Home extends Component {
   constructor(props) {
     super(props);
-    this.authService = new AuthService();
+    this.userService = new UserService();
   }
   send = () => {
-    let token = this.authService.refreshToken();
-    console.warn(token);
+    this.userService.getCurrent().then((res) => {
+      console.warn(res);
+    });
     
   }
   render() {

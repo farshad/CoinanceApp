@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import { Animated, View, Text } from "react-native";
 import { Spinner } from 'native-base';
 import UserRepository from '../../storage/repositories/UserRepository';
+import AuthService from '../../services/AuthService';
 import i18n from '../../i18n';
 
 export default class Splash extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.userRepository = new UserRepository();
+    this.authService = new AuthService();
 }
   state = {
     logoOpacity : new Animated.Value(0),
@@ -28,7 +30,8 @@ export default class Splash extends Component {
       })
     ]).start(() => {
       this.setState({spinnerOpacity: 1});
-      if(this.userRepository.getToken() != null){
+      if(this.authService.getToken() != null){
+        this.authService.refreshToken();
         this.props.navigation.navigate('Tab');
       }else {
         this.userRepository.deleteAll();

@@ -4,8 +4,8 @@ import AuthService from '../services/AuthService';
 
 export default class Request {
     constructor(navigation) {
-        this.authService = new AuthService();
         this.navigation = navigation;
+        this.authService = new AuthService();
         this.instance = axios.create(this.getConfig());
 
         this.instance.interceptors.request.use(request => {
@@ -15,32 +15,25 @@ export default class Request {
         this.instance.interceptors.response.use(function (response) {
             return response.data;
         }, function (error) {
-            if (error.status === 401) {
-        
-                return refreshToken(store).then(_ => {
-                    error.config.headers['Authorization'] = 'Bearer ' + this.authService.refreshToken();
-                    error.config.baseURL = undefined;
-                    return Axios.request(error.config);
-                });
-            }
-            return Promise.reject(error.response.data, error.status);
+            return Promise.reject(error.response.data, error.response.status);
         });
     }
 
     getConfig = () => {
-        let _token = "";
+        let token = this.authService.getToken();
+        token = token != null ? token : '';
         return {
             baseURL: BASE_URL,
             timeout: 3000,
             headers: {
-                'Authorization': `Bearer ${_token}`,
+                'Authorization': `Bearer ${token}`,
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
         };
     }
     async get(url, params) {
-        return await this.instance.get(url, { params: params });
+        return this.instance.get(url, { params: params });
     }
     
     async post(url, data, params) {

@@ -28,6 +28,8 @@ export default class UserRepository extends BaseRepository {
             }
             return user;
         } catch (error) {
+            console.warn(error);
+            
             return error;
         }
     }
