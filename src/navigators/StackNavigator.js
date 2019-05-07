@@ -4,6 +4,7 @@ import Update from "../components/Profile/Update";
 import ChangePassword from '../components/Profile/ChangePassword';
 import PersonalDoc from '../components/Profile/PersonalDoc';
 import Home from '../components/Home';
+import Deal from '../components/Deal';
 import Support from '../components/Support';
 
 export const ProfileNavigator = createStackNavigator({
@@ -31,6 +32,15 @@ export const ProfileNavigator = createStackNavigator({
             tabBarVisible: null,
         })
     }
+ });
+
+ export const DealNavigator = createStackNavigator({
+    Deal: {
+        screen: Deal,
+        navigationOptions: () => ({
+            header: null,
+        })
+    },
  });
 
  export const HomeNavigator = createStackNavigator({

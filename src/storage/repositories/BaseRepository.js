@@ -54,6 +54,19 @@ export default class BaseRepository {
         }
     }
 
+    update = function(data) {
+        try {
+            this._realm.write(() => {
+                this._realm.create(this._schema.name, data, true);
+            });
+
+            return data;
+        } catch (error) {
+            alert(error.message);
+            return data;
+        }
+    }
+
     deleteByKey = function(keyVal, cb) {
         try {
             let items = this._realm.objects(this._schema.name).filtered(this._key + ' == "' + keyVal + '"');

@@ -16,7 +16,10 @@ export default {
       title: 'اطلاعات کاربری',
       update: 'ویرایش اطلاعات',
       docs: 'ارسال مدارک',
-      changePass: 'تغییر رمز عبور'
+      changePass: 'تغییر رمز عبور',
+      oldPassword: 'رمز عبور فعلی',
+      newPassword: 'رمز عبور جدید',
+      changePassSuccess: 'تغییر رمز با موفقیت انجام شد'
     },
     finance: {
       title: 'اطلاعات مالی',

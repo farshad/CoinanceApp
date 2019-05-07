@@ -7,6 +7,8 @@ export const URL = {
     },
     USER: {
         CURRENT: 'profile/',
+        UPDATE: 'profile/update',
+        CHANGE_PASSWORD: 'profile/changePassword',
         LOGIN: 'signin/'
     }
 }
