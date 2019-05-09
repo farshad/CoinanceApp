@@ -75,7 +75,7 @@ export default class Profile extends Component {
                 <Icon name="arrow-back" />
               </Right>
             </ListItem>
-            <ListItem button={true} onPress={ () => this.props.navigation.navigate('ChangePassword') } >
+            <ListItem button={true} onPress={ () => this.props.navigation.navigate('BankAccount') } >
               <Left>
                 <Text>{ i18n.t('finance.addBankAccount') }</Text>
               </Left>
@@ -83,7 +83,7 @@ export default class Profile extends Component {
                 <Icon name="arrow-back" />
               </Right>
             </ListItem>
-            <ListItem button={true} onPress={ () => this.props.navigation.navigate('ChangePassword') } >
+            <ListItem button={true} onPress={ () => this.props.navigation.navigate('SettlementRequest') } >
               <Left>
                 <Text>{ i18n.t('finance.settlementRequest') }</Text>
               </Left>

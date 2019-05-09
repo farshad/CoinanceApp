@@ -6,6 +6,8 @@ import PersonalDoc from '../components/Profile/PersonalDoc';
 import Home from '../components/Home';
 import Deal from '../components/Deal';
 import Support from '../components/Support';
+import BankAccount from '../components/Finance/BankAccount';
+import SettlementRequest from '../components/Finance/SettlementRequest';
 
 export const ProfileNavigator = createStackNavigator({
     Profile: {
@@ -28,6 +30,18 @@ export const ProfileNavigator = createStackNavigator({
     },
     ChangePassword: {
         screen: ChangePassword,
+        navigationOptions: () => ({
+            tabBarVisible: null,
+        })
+    },
+    BankAccount: {
+        screen: BankAccount,
+        navigationOptions: () => ({
+            tabBarVisible: null,
+        })
+    },
+    SettlementRequest: {
+        screen: SettlementRequest,
         navigationOptions: () => ({
             tabBarVisible: null,
         })

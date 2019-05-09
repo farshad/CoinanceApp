@@ -28,6 +28,16 @@ export default {
       deposit: 'افزایش اعتبار',
       settlementRequest: 'درخواست برداشت وجه'
     },
+    bankAccount: {
+      selectBank: 'انتخاب بانک',
+      save: 'حساب بانکی شما ذخیره شد',
+      shaba: 'شماره شبا',
+      cardNo: 'شماره کارت'
+    },
+    settlementRequest: {
+      amount: 'مبلغ (تومان)',
+      save: 'درخواست شما با موفقیت ثبت شد'
+    },
     splash: {
       appName: 'Coinance',
       slogan: 'معامله آسان و مطمئن'

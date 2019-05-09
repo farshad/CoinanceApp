@@ -10,5 +10,15 @@ export const URL = {
         UPDATE: 'profile/update',
         CHANGE_PASSWORD: 'profile/changePassword',
         LOGIN: 'signin/'
+    },
+    BANK_ACCOUNT: {
+        GET: 'bankAccount/',
+        SAVE: 'bankAccount/save'
+    },
+    Settlement_Request: {
+        SAVE: 'settlementRequest/add'
+    },
+    BANK: {
+        FETCH_ALL: 'bank/all'
     }
 }
