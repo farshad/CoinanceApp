@@ -60,7 +60,7 @@ export default TabNavigator = createBottomTabNavigator(
             vertical
             active={props.navigation.state.index === 3}
             onPress={() => props.navigation.navigate("Support")}>
-            <Icon style={props.navigation.state.index === 3 ? styles.activeIconAndTxt : styles.inactiveIcon} name="chatboxes" />
+            <Icon style={props.navigation.state.index === 3 ? styles.activeIconAndTxt : styles.inactiveIcon} name="help-buoy" />
             {props.navigation.state.index === 3 && (<Text style={props.navigation.state.index === 3 ? styles.activeIconAndTxt : null}>{ i18n.t('mainTab.support') }</Text>)}
           </Button>
         </FooterTab>

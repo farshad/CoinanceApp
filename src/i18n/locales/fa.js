@@ -2,6 +2,7 @@ export default {
     common: {
         mobileNumber: 'شماره همراه',
         submit: 'ثبت',
+        send: 'ارسال',
         email: 'ایمیل',
         fullName: 'نام و نام‌خانوادگی',
         required: '(اجباری)'
@@ -15,7 +16,7 @@ export default {
     profile: {
       title: 'اطلاعات کاربری',
       update: 'ویرایش اطلاعات',
-      docs: 'ارسال مدارک',
+      docs: 'ارسال مدارک هویتی',
       changePass: 'تغییر رمز عبور',
       oldPassword: 'رمز عبور فعلی',
       newPassword: 'رمز عبور جدید',
@@ -57,6 +58,12 @@ export default {
       sendAgainBtn: 'ارسال مجدد',
       sendAgain: 'ارسال مجدد کد تایید',
       changeMobileNumber: 'تغییر شماره همراه'
+    },
+    personalDoc: {
+      cardId: 'کارت ملی',
+      cardIdImage: 'تصویر کارت ملی',
+      satisfaction: 'رضایتنامه',
+      satisfactionImage: 'تصویر رضایتنامه'
     },
     text: {
       error: 'Error',

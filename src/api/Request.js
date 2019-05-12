@@ -39,4 +39,11 @@ export default class Request {
     async post(url, data, params) {
         return this.instance.post(url, data, { params : params });
     }
+    async upload(url, formData) {
+        return this.instance.post(url, formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+        });
+    }
 };

@@ -8,6 +8,8 @@ import Deal from '../components/Deal';
 import Support from '../components/Support';
 import BankAccount from '../components/Finance/BankAccount';
 import SettlementRequest from '../components/Finance/SettlementRequest';
+import UploadDocForm from '../components/Profile/PersonalDoc/UploadDocForm';
+import ViewDocs from '../components/Profile/PersonalDoc/ViewDocs';
 
 export const ProfileNavigator = createStackNavigator({
     Profile: {
@@ -24,6 +26,18 @@ export const ProfileNavigator = createStackNavigator({
       },
       PersonalDoc: {
         screen: PersonalDoc,
+        navigationOptions: () => ({
+            tabBarVisible: null,
+        })
+    },
+    UploadDocForm: {
+        screen: UploadDocForm,
+        navigationOptions: () => ({
+            tabBarVisible: null,
+        })
+    },
+    ViewDocs: {
+        screen: ViewDocs,
         navigationOptions: () => ({
             tabBarVisible: null,
         })

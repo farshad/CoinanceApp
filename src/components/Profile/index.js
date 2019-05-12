@@ -1,23 +1,21 @@
 import React, { Component } from "react";
-import { 
+import {
   Container, Content,
   List, Separator,
   Icon, ListItem,
   Text, Left, Right,
-  Thumbnail, Body 
+  Thumbnail, Body
 } from 'native-base';
 import i18n from '../../i18n'
 import UserService from '../../services/UserService'
 
 export default class Profile extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.userService = new UserService();
-    this.state = {fullName: '', mobile: ''};
-  }
-  componentWillMount(){
+    this.state = { fullName: '', mobile: '' };
     this.userService.getCurrent().then((res) => {
-      this.setState({fullName: res.fullName, mobile: res.mobile});
+      this.setState({ fullName: res.fullName, mobile: res.mobile });
     });
   }
   render() {
@@ -26,10 +24,10 @@ export default class Profile extends Component {
         <Content>
           <List>
             <Separator>
-              <Text>{ i18n.t('profile.title') }</Text>
+              <Text>{i18n.t('profile.title')}</Text>
             </Separator>
-            <ListItem onPress={ () => this.props.navigation.navigate('Update') }>
-              <Left style={{justifyContent: 'center' }}>
+            <ListItem onPress={() => this.props.navigation.navigate('Update')}>
+              <Left style={{ justifyContent: 'center' }}>
                 <Thumbnail source={require('../../assets/images/avatar_default.png')} />
                 <Body style={{ flex: 1, alignItems: 'flex-start', marginLeft: 10, marginTop: 10 }} >
                   <Text>{this.state.fullName}</Text>
@@ -40,52 +38,52 @@ export default class Profile extends Component {
                 <Icon name="arrow-back" />
               </Right>
             </ListItem>
-            <ListItem button={true} onPress={ () => this.props.navigation.navigate('PersonalDoc') } >
+            <ListItem button={true} onPress={() => this.props.navigation.navigate('PersonalDoc')} >
               <Left>
-                <Text>{ i18n.t('profile.docs') }</Text>
+                <Text>{i18n.t('profile.docs')}</Text>
               </Left>
               <Right>
                 <Icon name="arrow-back" />
               </Right>
             </ListItem>
-            <ListItem button={true} onPress={ () => this.props.navigation.navigate('ChangePassword') } >
+            <ListItem button={true} onPress={() => this.props.navigation.navigate('ChangePassword')} >
               <Left>
-                <Text>{ i18n.t('profile.changePass') }</Text>
+                <Text>{i18n.t('profile.changePass')}</Text>
               </Left>
               <Right>
                 <Icon name="arrow-back" />
               </Right>
             </ListItem>
             <Separator>
-              <Text>{ i18n.t('finance.title') }</Text>
+              <Text>{i18n.t('finance.title')}</Text>
             </Separator>
-            <ListItem button={true} onPress={ () => this.props.navigation.navigate('ChangePassword') } >
+            <ListItem button={true} onPress={() => this.props.navigation.navigate('ChangePassword')} >
               <Left>
-                <Text>{ i18n.t('finance.deposit') }</Text>
+                <Text>{i18n.t('finance.deposit')}</Text>
               </Left>
               <Right>
                 <Icon name="arrow-back" />
               </Right>
             </ListItem>
-            <ListItem button={true} onPress={ () => this.props.navigation.navigate('ChangePassword') } >
+            <ListItem button={true} onPress={() => this.props.navigation.navigate('ChangePassword')} >
               <Left>
-                <Text>{ i18n.t('finance.transactionsHistory') }</Text>
+                <Text>{i18n.t('finance.transactionsHistory')}</Text>
               </Left>
               <Right>
                 <Icon name="arrow-back" />
               </Right>
             </ListItem>
-            <ListItem button={true} onPress={ () => this.props.navigation.navigate('BankAccount') } >
+            <ListItem button={true} onPress={() => this.props.navigation.navigate('BankAccount')} >
               <Left>
-                <Text>{ i18n.t('finance.addBankAccount') }</Text>
+                <Text>{i18n.t('finance.addBankAccount')}</Text>
               </Left>
               <Right>
                 <Icon name="arrow-back" />
               </Right>
             </ListItem>
-            <ListItem button={true} onPress={ () => this.props.navigation.navigate('SettlementRequest') } >
+            <ListItem button={true} onPress={() => this.props.navigation.navigate('SettlementRequest')} >
               <Left>
-                <Text>{ i18n.t('finance.settlementRequest') }</Text>
+                <Text>{i18n.t('finance.settlementRequest')}</Text>
               </Left>
               <Right>
                 <Icon name="arrow-back" />

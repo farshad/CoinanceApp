@@ -20,5 +20,9 @@ export const URL = {
     },
     BANK: {
         FETCH_ALL: 'bank/all'
+    },
+    DOCUMENT: {
+        UPLOAD: 'document/upload',
+        GET: 'document/'
     }
 }
